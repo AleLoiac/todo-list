@@ -16,6 +16,16 @@
     font-display: swap;
 }
 
+:root {
+    --color1: rgb(255 235 235);
+    --color2: rgb(255 206 206);
+    --color3: rgb(255 184 184);
+    --color4: rgb(235 241 255);
+
+    --gradient1: rgb(121 0 0);
+    --gradient2: rgb(0, 0, 0);
+}
+
 *,
 ::before,
 ::after {
@@ -24,7 +34,6 @@
 
 html {
     font-family: 'Poppins', sans-serif;
-	line-height: 1.15;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -43,13 +52,19 @@ select,
 textarea {
 	font-family: inherit;
 	font-size: 100%;
-	line-height: 1.15;
 	margin: 0;
+    border-radius: 7px;
+    border: 1px solid;
+}
+
+button {
+    cursor: pointer;
 }
 
 .projects-nav {
     padding: 10px;
-    background-color: azure;
+    margin-right: 10px;
+    background-color: var(--color4);
     border-radius: 10px;
     height: 100%;
 }
@@ -62,13 +77,14 @@ textarea {
 .open-project {
     padding: 10px;
     border-radius: 10px;
-    border: 3px ridge purple;
+    box-shadow: 0px 0px 4px 4px var(--color3);
     height: 100%;
     flex: 2;
 }
 
 .new-todo-banner {
-    border: 3px ridge yellowgreen;
+    margin-left: 10px;
+    background-color: var(--color1);
     height: 100%;
     flex: 1.2;
 }
@@ -97,21 +113,21 @@ form > div:last-of-type {
 
 .add-project-btn,
 .project {
-    background-color: rgb(255, 205, 205);
+    background-color: var(--color2);
 }
 
 .add-todo-btn,
-.todo {
-    background-color: bisque;
+.todo,
+.open-todo {
+    background-color: var(--color2);
 }
 
 .add-project-btn,
-.add-todo-btn
-.confirm-task-btn {
+.add-todo-btn {
     font-weight: bold;
 }
 
-.todo {
+.todo, .open-pair {
     display: flex;
     justify-content: space-between;
 }
@@ -120,13 +136,76 @@ form > div:last-of-type {
     margin: 0;
 }
 
+.open-todo {
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.open-todo > * {
+    margin-bottom: 15px;
+}
+
+.open-title {
+    font-weight: bold;
+}
+
+p {
+    margin: 0;
+}
+
+.open-todo > :first-child {
+    text-align: right;
+}
+
+.open-description {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.open-priority {
+    display: flex;
+}
+
+.open-priority > :first-child,
+.open-completion > :first-child {
+    margin-right: 6px;
+}
+
+.open-completion {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-btn,
+.delete-task-btn,
+.confirm-task-btn {
+    border: none;
+    background: linear-gradient(45deg, var(--gradient1), var(--gradient2));
+    color: white;
+}
+
+.delete-task-btn {
+    margin:0;
+    padding: 2px 7px;
+}
+
 .new-todo-banner {
     padding: 10px;
     border-radius: 10px;
+}
+
+form > * {
+    margin-bottom: 10px;
 }
 
 textarea ,
 input,
 select {
     width: 100%;
+    padding: 2px 5px;
 }
+
+
