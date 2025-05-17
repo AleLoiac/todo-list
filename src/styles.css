@@ -11,6 +11,8 @@ html {
 
 body {
 	margin: 0;
+    display: grid;
+    grid-template-columns: clamp(100px, 25%, 400px) 1fr;
 }
 
 button,
@@ -18,8 +20,31 @@ input,
 optgroup,
 select,
 textarea {
-	font-family: inherit; /* 1 */
-	font-size: 100%; /* 1 */
-	line-height: 1.15; /* 1 */
-	margin: 0; /* 2 */
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+.projects-nav {
+    border: 3px solid blue;
+    height: 100vh;
+}
+
+.content {
+    border: 3px solid red;
+    height: 100vh;
+    display: flex;
+}
+
+.open-project {
+    border: 3px ridge purple;
+    height: 100vh;
+    flex: 2;
+}
+
+.new-todo-banner {
+    border: 3px ridge yellowgreen;
+    height: 100vh;
+    flex: 1.2;
 }
