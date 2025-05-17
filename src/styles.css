@@ -48,17 +48,20 @@ textarea {
 }
 
 .projects-nav {
-    border: 3px solid blue;
+    padding: 10px;
+    background-color: azure;
+    border-radius: 10px;
     height: 100%;
 }
 
 .content {
-    border: 3px solid red;
     height: 100%;
     display: flex;
 }
 
 .open-project {
+    padding: 10px;
+    border-radius: 10px;
     border: 3px ridge purple;
     height: 100%;
     flex: 2;
@@ -68,4 +71,51 @@ textarea {
     border: 3px ridge yellowgreen;
     height: 100%;
     flex: 1.2;
+}
+
+.add-project-btn,
+.project,
+.add-todo-btn,
+.todo {
+    text-align: left;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-project-btn,
+.project {
+    background-color: rgb(255, 205, 205);
+}
+
+.add-todo-btn,
+.todo {
+    background-color: bisque;
+}
+
+.add-project-btn,
+.add-todo-btn {
+    font-weight: bold;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo > p {
+    margin: 0;
+}
+
+.new-todo-banner {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+textarea ,
+input,
+select {
+    width: 100%;
 }
