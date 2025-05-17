@@ -17,10 +17,11 @@
 }
 
 :root {
-    --color1: rgb(255 235 235);
+    --color1: rgb(255 239 195);
     --color2: rgb(255 206 206);
     --color3: rgb(255 184 184);
     --color4: rgb(235 241 255);
+    --color5: rgb(191 226 255);
 
     --gradient1: rgb(121 0 0);
     --gradient2: rgb(0, 0, 0);
@@ -80,6 +81,7 @@ button {
     box-shadow: 0px 0px 4px 4px var(--color3);
     height: 100%;
     flex: 2;
+    font-size: 1.1rem;
 }
 
 .new-todo-banner {
@@ -113,7 +115,7 @@ form > div:last-of-type {
 
 .add-project-btn,
 .project {
-    background-color: var(--color2);
+    background-color: var(--color5);
 }
 
 .add-todo-btn,
