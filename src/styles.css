@@ -85,6 +85,16 @@ textarea {
     border-radius: 5px;
 }
 
+.confirm-task-btn {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+form > div:last-of-type {
+    text-align: center;
+}
+
 .add-project-btn,
 .project {
     background-color: rgb(255, 205, 205);
@@ -96,7 +106,8 @@ textarea {
 }
 
 .add-project-btn,
-.add-todo-btn {
+.add-todo-btn
+.confirm-task-btn {
     font-weight: bold;
 }
 
