@@ -30,6 +30,8 @@ html {
 
 body {
 	margin: 0;
+    padding: 15px;
+    height: 100vh;
     display: grid;
     grid-template-columns: clamp(100px, 25%, 400px) 1fr;
 }
@@ -47,23 +49,23 @@ textarea {
 
 .projects-nav {
     border: 3px solid blue;
-    height: 100vh;
+    height: 100%;
 }
 
 .content {
     border: 3px solid red;
-    height: 100vh;
+    height: 100%;
     display: flex;
 }
 
 .open-project {
     border: 3px ridge purple;
-    height: 100vh;
+    height: 100%;
     flex: 2;
 }
 
 .new-todo-banner {
     border: 3px ridge yellowgreen;
-    height: 100vh;
+    height: 100%;
     flex: 1.2;
 }
