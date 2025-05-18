@@ -20,3 +20,7 @@ export function createProject(name) {
 
     return newProject;
 }
+
+export function getProjectList() {
+    return projectList;
+}
