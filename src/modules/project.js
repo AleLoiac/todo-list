@@ -12,6 +12,10 @@ class Project {
         const todo = addTodo(title, description, dueDate, priority);
         this.list.push(todo);
     }
+
+    getTodoList() {
+        return this.list;
+    }
 }
 
 export function createProject(name) {
@@ -22,5 +26,5 @@ export function createProject(name) {
 }
 
 export function getProjectList() {
-    return projectList;
+    return [...projectList];
 }
