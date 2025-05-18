@@ -70,6 +70,10 @@ button {
     height: 100%;
 }
 
+.project:active {
+    box-shadow: inset 0px 0px 3px 3px var(--color3);
+}
+
 .content {
     height: 100%;
     display: flex;
