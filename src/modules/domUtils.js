@@ -1,6 +1,7 @@
 import { createProject, getProjectList } from "./project";
 
 const projectList = document.querySelector(".project-list");
+const openProject = document.querySelector(".open-project");
 
 export function addProject(title) {
     const projectDiv = document.createElement("div");
@@ -35,4 +36,17 @@ function isValidTitle(title) {
         return
     }
     return true
+}
+
+export function selectProject(name) {
+    openProject.innerHTML = "";
+
+    const h1 = document.createElement("h1");
+    h1.textContent = name;
+    openProject.appendChild(h1);
+
+    const addButton = document.createElement("button");
+    addButton.textContent = "+ Add New Task";
+    addButton.classList.add("add-todo-btn");
+    openProject.appendChild(addButton);
 }
