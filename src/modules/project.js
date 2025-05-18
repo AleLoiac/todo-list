@@ -1,5 +1,7 @@
 import { addTodo } from "./todo";
 
+const projectList = [];
+
 class Project {
     constructor(name) {
         this.name = name;
@@ -12,6 +14,9 @@ class Project {
     }
 }
 
-export function addProject(name) {
-    return new Project(name);
+export function createProject(name) {
+    const newProject = new Project(name);
+    projectList.push(newProject);
+
+    return newProject;
 }
