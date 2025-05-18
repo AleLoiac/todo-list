@@ -1,10 +1,9 @@
 import "./styles.css";
 import { createProject } from "./modules/project";
-import { addProject, selectProject } from "./modules/domUtils";
-import { handleProject } from "./modules/domUtils";
+import { addProject, selectProject, handleProject } from "./modules/domUtils";
 
-createProject("Default project");
-addProject("Default project");
+const defaultProject = createProject("Default project");
+addProject(defaultProject.name);
 
 const addProjectBtn = document.querySelector(".add-project-btn");
 const projectList = document.querySelector(".project-list");
