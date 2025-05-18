@@ -16,8 +16,8 @@ export function handleProject() {
         return
     }
     
-    addProject(title);
-    createProject(title);
+    const project = createProject(title);
+    addProject(project.name);
 }
 
 function isValidTitle(title) {
@@ -39,14 +39,37 @@ function isValidTitle(title) {
 }
 
 export function selectProject(name) {
-    openProject.innerHTML = "";
+    openProject.textContent = "";
 
-    const h1 = document.createElement("h1");
-    h1.textContent = name;
-    openProject.appendChild(h1);
+    newElement("h1", "", name, openProject)
+    newElement("button", "add-todo-btn", "+ Add New Task", openProject);
 
-    const addButton = document.createElement("button");
-    addButton.textContent = "+ Add New Task";
-    addButton.classList.add("add-todo-btn");
-    openProject.appendChild(addButton);
+    const projectList = getProjectList();
+    let currentProject;
+
+    for (const project of projectList) {
+        if (project.name === name) {
+            currentProject = project;
+        }
+    }
+    const todoList = currentProject.getTodoList();
+
+    for (const todo of todoList) {
+        renderTodo(todo);
+    }
+}
+
+function renderTodo(todo) {
+    const todoList = newElement("div", "todo-list", "", openProject)
+    const newTodo = newElement("div", "todo", "", todoList);
+    newElement("p", "", todo.title, newTodo);
+    newElement("p", "", todo.dueDate, newTodo);
+}
+
+function newElement(tag, className, textContent, parent) {
+	const element = document.createElement(tag);
+	if (className) element.classList.add(className);
+	if (textContent) element.textContent = textContent;
+	parent.appendChild(element);
+    return element
 }
