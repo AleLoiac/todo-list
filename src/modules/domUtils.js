@@ -1,4 +1,4 @@
-import { createProject } from "./project";
+import { createProject, getProjectList } from "./project";
 
 const projectList = document.querySelector(".project-list");
 
@@ -11,12 +11,28 @@ export function addProject(title) {
 
 export function handleProject() {
     const title = prompt("Enter project title");
-    if (title === "") {
+    if (!isValidTitle(title)) {
+        return
+    }
+    
+    addProject(title);
+    createProject(title);
+}
+
+function isValidTitle(title) {
+    const projectNames = [];
+    const projectList = getProjectList();
+    for (const project of projectList) {
+        projectNames.push(project.name);
+    }
+    if (projectNames.includes(title)) {
+        alert("Project already exists");
+        return
+    } else if (title === "") {
         alert("Invalid Title");
     }
     if (!title) {
         return
     }
-    addProject(title);
-    createProject(title);
+    return true
 }
