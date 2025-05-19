@@ -16,6 +16,13 @@ class Project {
     getTodoList() {
         return this.list;
     }
+
+    removeTodo(todoId) {
+        const index = this.list.findIndex(todo => todo.id === todoId);
+        if (index !== -1) {
+            this.list.splice(index, 1);
+        }
+    }
 }
 
 export function createProject(name) {
