@@ -7,15 +7,6 @@
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Poppins';
-    src: url('assets/fonts/Poppins-Bold.woff2') format('woff2'),
-        url('assets/fonts/Poppins-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
 :root {
     --color1: rgb(255 239 195);
     --color2: rgb(255 206 206);
@@ -25,6 +16,7 @@
 
     --gradient1: rgb(121 0 0);
     --gradient2: rgb(0, 0, 0);
+    --gradient3: rgb(110, 92, 9);
 }
 
 *,
@@ -166,8 +158,9 @@ p {
     margin: 0;
 }
 
-.open-todo > :first-child {
-    text-align: right;
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .open-description {
@@ -192,9 +185,15 @@ p {
 
 .toggle-btn,
 .delete-task-btn,
-.confirm-task-btn {
+.edit-task-btn {
     border: none;
     background: linear-gradient(45deg, var(--gradient1), var(--gradient2));
+    color: white;
+}
+
+.confirm-task-btn {
+    border: none;
+    background: linear-gradient(45deg, var(--gradient3), var(--gradient2));
     color: white;
 }
 
