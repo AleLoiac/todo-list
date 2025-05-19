@@ -1,4 +1,4 @@
-import { createProject, getProjectList } from "./project";
+import { createProject, getProjectList, retrieveProject, retrieveTodo } from "./project";
 
 const projectList = document.querySelector(".project-list");
 const openProject = document.querySelector(".open-project");
@@ -36,26 +36,13 @@ export function renderProject(title) {
     projectList.appendChild(projectDiv);
 }
 
-function retrieveProject(title) {
-    const projectList = getProjectList();
-    let currentProject;
-
-    for (const project of projectList) {
-        if (project.name === title) {
-            currentProject = project;
-        }
-    }
-    return currentProject;
-}
-
 export function selectProject(name) {
     openProject.textContent = "";
 
-    newElement("h1", "", name, openProject)
+    newElement("h1", "", name, openProject);
     newElement("button", "add-todo-btn", "+ Add New Task", openProject);
 
     const currentProject = retrieveProject(name);
-
     const todoList = currentProject.getTodoList();
     const list = newElement("div", "todo-list", "", openProject);
 
@@ -77,18 +64,6 @@ function newElement(tag, className, textContent, parent) {
 	if (textContent) element.textContent = textContent;
 	parent.appendChild(element);
     return element
-}
-
-function retrieveTodo(id, currentProject) {
-    const todoList = currentProject.getTodoList();
-
-    let currentTodo;
-    for (const todo of todoList) {
-        if (todo.id === id) {
-            currentTodo = todo;
-        }
-    }
-    return currentTodo;
 }
 
 export function selectTodo(projectTitle, id) {
@@ -151,12 +126,6 @@ export function toggle(projectTitle, todoId) {
     const p = document.querySelector(".open-completion > p");
     openCompletion.removeChild(p);
     newElement("p", "", completed, openCompletion);
-}
-
-export function deleteTodo(projectTitle, todoId) {
-    const currentProject = retrieveProject(projectTitle);
-    currentProject.removeTodo(todoId);
-    selectProject(projectTitle);
 }
 
 export function createTodoFromForm(projectTitle) {

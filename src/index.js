@@ -1,6 +1,6 @@
 import "./styles.css";
-import { createProject } from "./modules/project";
-import { renderProject, selectProject, handleProject, selectTodo, deleteTodo, toggle, createTodoFromForm } from "./modules/domUtils";
+import { createProject, deleteTodo } from "./modules/project";
+import { renderProject, selectProject, handleProject, selectTodo, toggle, createTodoFromForm } from "./modules/domUtils";
 
 const defaultProject = createProject("Default project");
 renderProject(defaultProject.name);
@@ -32,6 +32,7 @@ openProject.addEventListener("click", (e) => {
     } else if (e.target.closest(".delete-task-btn")) {
         const id = todoElement.dataset.id;
         deleteTodo(title, id);
+        selectProject(title);
     } else if (todoElement && openProject.contains(todoElement)) {
         const id = todoElement.dataset.id;
         selectTodo(title, id);

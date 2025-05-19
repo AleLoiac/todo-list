@@ -35,3 +35,32 @@ export function createProject(name) {
 export function getProjectList() {
     return [...projectList];
 }
+
+export function retrieveProject(title) {
+    const projectList = getProjectList();
+    let currentProject;
+
+    for (const project of projectList) {
+        if (project.name === title) {
+            currentProject = project;
+        }
+    }
+    return currentProject;
+}
+
+export function retrieveTodo(id, currentProject) {
+    const todoList = currentProject.getTodoList();
+
+    let currentTodo;
+    for (const todo of todoList) {
+        if (todo.id === id) {
+            currentTodo = todo;
+        }
+    }
+    return currentTodo;
+}
+
+export function deleteTodo(projectTitle, todoId) {
+    const currentProject = retrieveProject(projectTitle);
+    currentProject.removeTodo(todoId);
+}
