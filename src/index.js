@@ -1,6 +1,6 @@
 import "./styles.css";
 import { createProject } from "./modules/project";
-import { addProject, selectProject, handleProject, selectTodo, deleteTodo, toggle } from "./modules/domUtils";
+import { addProject, selectProject, handleProject, selectTodo, deleteTodo, toggle, createTodo } from "./modules/domUtils";
 
 const defaultProject = createProject("Default project");
 addProject(defaultProject.name);
@@ -12,6 +12,7 @@ selectProject(defaultProject.name);
 const addProjectBtn = document.querySelector(".add-project-btn");
 const projectList = document.querySelector(".project-list");
 const openProject = document.querySelector(".open-project");
+const addTodoBtn = document.querySelector(".confirm-task-btn");
 
 addProjectBtn.addEventListener("click", handleProject);
 
@@ -42,4 +43,17 @@ openProject.addEventListener("click", (e) => {
 	    	banner.style.display = 'none';
 	    }
     }
+})
+
+addTodoBtn.addEventListener("click", (e) => {
+    const form = document.querySelector("form");
+    if (!form.checkValidity()) {
+		return;
+	}
+    e.preventDefault();
+
+    const projectTitle = document.querySelector(".open-project > h1");
+    const title = projectTitle.textContent;
+    createTodo(title);
+    selectProject(title);
 })
