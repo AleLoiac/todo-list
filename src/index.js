@@ -26,6 +26,7 @@ openProject.addEventListener("click", (e) => {
     const todoElement = e.target.closest(".todo, .open-todo");
     const projectTitle = document.querySelector(".open-project > h1");
     const title = projectTitle.textContent;
+    
     if (e.target.closest(".toggle-btn")) {
         const id = todoElement.dataset.id;
         toggle(title, id);
