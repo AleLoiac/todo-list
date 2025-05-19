@@ -121,7 +121,8 @@ function renderOpenTodo(tag, todo) {
 
     const completed = todo.completion ? "Completed" : "Not completed";
 
-    const emptyDiv = newElement("div", "", "", tag);
+    const emptyDiv = newElement("div", "buttons", "", tag);
+    newElement("button", "edit-task-btn", "Edit", emptyDiv);
     newElement("button", "delete-task-btn", "⨯", emptyDiv);
     const openPair = newElement("div", "open-pair", "", tag);
     newElement("p", "open-title", todo.title, openPair);
