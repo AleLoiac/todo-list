@@ -159,3 +159,13 @@ export function deleteTodo(projectTitle, todoId) {
     currentProject.removeTodo(todoId);
     selectProject(projectTitle);
 }
+
+export function createTodo(projectTitle) {
+    const currentProject = retrieveProject(projectTitle); 
+    const todoTitle = document.querySelector("#title").value;
+    const todoDescription = document.querySelector("#description").value;
+    const todoDueDate = document.querySelector("#date").value;
+    const todoPriority = document.querySelector("#priority").value;
+
+    currentProject.appendTodo(todoTitle, todoDescription, todoDueDate, todoPriority);
+}
