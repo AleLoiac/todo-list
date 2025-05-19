@@ -1,4 +1,4 @@
-import { addTodo } from "./todo";
+import { createTodo } from "./todo";
 
 const projectList = [];
 
@@ -9,7 +9,7 @@ class Project {
     }
 
     appendTodo(title, description, dueDate, priority) {
-        const todo = addTodo(title, description, dueDate, priority);
+        const todo = createTodo(title, description, dueDate, priority);
         this.list.push(todo);
     }
 

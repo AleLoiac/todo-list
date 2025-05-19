@@ -11,13 +11,9 @@ class ToDo {
     toggleCompletion() {
         this.completion = !this.completion;
     }
-
-    changePriority(value) {
-        this.priority = value;
-    }
 }
 
-export function addTodo(title, description, dueDate, priority) {
+export function createTodo(title, description, dueDate, priority) {
     if (!title) {
         return
     }
