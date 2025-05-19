@@ -37,10 +37,10 @@ export function getProjectList() {
 }
 
 export function retrieveProject(title) {
-    const projectList = getProjectList();
+    const projects = getProjectList();
     let currentProject;
 
-    for (const project of projectList) {
+    for (const project of projects) {
         if (project.name === title) {
             currentProject = project;
         }
