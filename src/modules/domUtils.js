@@ -38,20 +38,26 @@ function isValidTitle(title) {
     return true
 }
 
+function retrieveProject(title) {
+    const projectList = getProjectList();
+    let currentProject;
+
+    for (const project of projectList) {
+        if (project.name === title) {
+            currentProject = project;
+        }
+    }
+    return currentProject;
+}
+
 export function selectProject(name) {
     openProject.textContent = "";
 
     newElement("h1", "", name, openProject)
     newElement("button", "add-todo-btn", "+ Add New Task", openProject);
 
-    const projectList = getProjectList();
-    let currentProject;
+    const currentProject = retrieveProject(name);
 
-    for (const project of projectList) {
-        if (project.name === name) {
-            currentProject = project;
-        }
-    }
     const todoList = currentProject.getTodoList();
     const list = newElement("div", "todo-list", "", openProject);
 
@@ -75,15 +81,7 @@ function newElement(tag, className, textContent, parent) {
     return element
 }
 
-export function selectTodo(projectTitle, id) {
-    const projectList = getProjectList();
-    let currentProject;
-
-    for (const project of projectList) {
-        if (project.name === projectTitle) {
-            currentProject = project;
-        }
-    }
+function retrieveTodo(id, currentProject) {
     const todoList = currentProject.getTodoList();
 
     let currentTodo;
@@ -92,6 +90,12 @@ export function selectTodo(projectTitle, id) {
             currentTodo = todo;
         }
     }
+    return currentTodo;
+}
+
+export function selectTodo(projectTitle, id) {
+    const currentProject = retrieveProject(projectTitle);
+    const currentTodo = retrieveTodo(id, currentProject);
 
     if (!currentTodo) return;
 
