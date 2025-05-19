@@ -10,7 +10,7 @@ export function handleProject() {
     }
     
     const project = createProject(title);
-    addProject(project.name);
+    renderProject(project.name);
 }
 
 function isValidTitle(title) {
@@ -29,7 +29,7 @@ function isValidTitle(title) {
     return true
 }
 
-export function addProject(title) {
+export function renderProject(title) {
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("project");
     projectDiv.textContent = title;

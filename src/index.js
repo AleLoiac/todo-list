@@ -1,9 +1,9 @@
 import "./styles.css";
 import { createProject } from "./modules/project";
-import { addProject, selectProject, handleProject, selectTodo, deleteTodo, toggle, createTodoFromForm } from "./modules/domUtils";
+import { renderProject, selectProject, handleProject, selectTodo, deleteTodo, toggle, createTodoFromForm } from "./modules/domUtils";
 
 const defaultProject = createProject("Default project");
-addProject(defaultProject.name);
+renderProject(defaultProject.name);
 defaultProject.appendTodo("Sweep floor", "Sweep all house", "15/07/2025", "Low");
 defaultProject.appendTodo("Run", "Run for 4 miles", "17/07/2025", "Mid");
 defaultProject.appendTodo("Groceries", "Buy groceries for the next week", "14/06/2025", "High");
