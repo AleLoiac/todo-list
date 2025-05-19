@@ -3,13 +3,6 @@ import { createProject, getProjectList } from "./project";
 const projectList = document.querySelector(".project-list");
 const openProject = document.querySelector(".open-project");
 
-export function addProject(title) {
-    const projectDiv = document.createElement("div");
-    projectDiv.classList.add("project");
-    projectDiv.textContent = title;
-    projectList.appendChild(projectDiv);
-}
-
 export function handleProject() {
     const title = prompt("Enter project title");
     if (!isValidTitle(title)) {
@@ -21,21 +14,26 @@ export function handleProject() {
 }
 
 function isValidTitle(title) {
-    const projectNames = [];
     const projectList = getProjectList();
+
     for (const project of projectList) {
-        projectNames.push(project.name);
+        if (project.name === title){
+            alert("Existing project");
+            return false
+        }
     }
-    if (projectNames.includes(title)) {
-        alert("Project already exists");
-        return
-    } else if (title === "") {
+    if (title.trim() === "") {
         alert("Invalid Title");
-    }
-    if (!title) {
-        return
+        return false
     }
     return true
+}
+
+export function addProject(title) {
+    const projectDiv = document.createElement("div");
+    projectDiv.classList.add("project");
+    projectDiv.textContent = title;
+    projectList.appendChild(projectDiv);
 }
 
 function retrieveProject(title) {
