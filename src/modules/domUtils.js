@@ -161,7 +161,7 @@ export function deleteTodo(projectTitle, todoId) {
     selectProject(projectTitle);
 }
 
-export function createTodo(projectTitle) {
+export function createTodoFromForm(projectTitle) {
     const currentProject = retrieveProject(projectTitle); 
     const todoTitle = document.querySelector("#title").value;
     const todoDescription = document.querySelector("#description").value;

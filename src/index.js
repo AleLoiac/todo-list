@@ -1,6 +1,6 @@
 import "./styles.css";
 import { createProject } from "./modules/project";
-import { addProject, selectProject, handleProject, selectTodo, deleteTodo, toggle, createTodo } from "./modules/domUtils";
+import { addProject, selectProject, handleProject, selectTodo, deleteTodo, toggle, createTodoFromForm } from "./modules/domUtils";
 
 const defaultProject = createProject("Default project");
 addProject(defaultProject.name);
@@ -54,6 +54,6 @@ addTodoBtn.addEventListener("click", (e) => {
 
     const projectTitle = document.querySelector(".open-project > h1");
     const title = projectTitle.textContent;
-    createTodo(title);
+    createTodoFromForm(title);
     selectProject(title);
 })
