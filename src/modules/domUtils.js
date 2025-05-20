@@ -160,5 +160,21 @@ export function renderDialog(projectTitle, todoId) {
     todoDueDate.value = currentTodoDate;
     todoPriority.value = currentTodoPriority;
 
+    todoTitle.dataset.id = todo.id;
+
     dialog.showModal();
+}
+
+export function editTodo(projectTitle) {
+    const currentProject = retrieveProject(projectTitle);
+    const todoTitle = document.querySelector("#edit-title");
+    const todoId = todoTitle.dataset.id;
+    const todo = retrieveTodo(todoId, currentProject);
+
+    const titleValue = document.querySelector("#edit-title").value;
+    const descriptionValue = document.querySelector("#edit-description").value;
+    const dateValue = document.querySelector("#edit-date").value;
+    const priorityValue = document.querySelector("#edit-priority").value;
+
+    todo.edit(titleValue, descriptionValue, dateValue, priorityValue);
 }

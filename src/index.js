@@ -1,12 +1,12 @@
 import "./styles.css";
 import { createProject, deleteTodo } from "./modules/project";
-import { renderProject, selectProject, handleProject, selectTodo, toggle, createTodoFromForm, renderDialog } from "./modules/domUtils";
+import { renderProject, selectProject, handleProject, selectTodo, toggle, createTodoFromForm, renderDialog, editTodo } from "./modules/domUtils";
 
 const defaultProject = createProject("Default project");
 renderProject(defaultProject.name);
-defaultProject.appendTodo("Sweep floor", "Sweep all house", "15-07-2025", "Low");
-defaultProject.appendTodo("Run", "Run for 4 miles", "17-07-2025", "Medium");
-defaultProject.appendTodo("Groceries", "Buy groceries for the next week", "14-06-2025", "High");
+defaultProject.appendTodo("Sweep floor", "Sweep all house", "2025-07-15", "Low");
+defaultProject.appendTodo("Run", "Run for 4 miles", "2024-07-14", "Medium");
+defaultProject.appendTodo("Groceries", "Buy groceries for the next week", "2025-07-16", "High");
 selectProject(defaultProject.name);
 
 const addProjectBtn = document.querySelector(".add-project-btn");
@@ -15,6 +15,7 @@ const openProject = document.querySelector(".open-project");
 const addTodoBtn = document.querySelector(".confirm-task-btn");
 const dialog = document.querySelector("dialog");
 const closeDialogBtn = document.querySelector(".close-modal-btn");
+const confirmEditBtn = document.querySelector(".confirm-edit-btn");
 
 addProjectBtn.addEventListener("click", handleProject);
 
@@ -66,5 +67,19 @@ addTodoBtn.addEventListener("click", (e) => {
 })
 
 closeDialogBtn.addEventListener("click", () => {
+    dialog.close();
+})
+
+confirmEditBtn.addEventListener("click", (e) => {
+    const form = document.querySelector("dialog > form");
+    if (!form.checkValidity()) {
+		return;
+	}
+    e.preventDefault();
+
+    const projectTitle = document.querySelector(".open-project > h1");
+    const title = projectTitle.textContent;
+    editTodo(title);
+    selectProject(title);
     dialog.close();
 })
