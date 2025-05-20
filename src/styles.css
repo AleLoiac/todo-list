@@ -114,7 +114,7 @@ button:active {
     border-radius: 5px;
 }
 
-form > div:last-of-type {
+.new-todo-form > div:last-of-type {
     text-align: center;
 }
 
@@ -211,7 +211,7 @@ p {
     border-radius: 10px;
 }
 
-form > * {
+.new-todo-form > * {
     margin-bottom: 10px;
 }
 
@@ -222,4 +222,20 @@ select {
     padding: 2px 5px;
 }
 
+.confirm-edit-btn,
+.close-modal-btn {
+    margin-top: 10px;
+}
 
+dialog div {
+    margin-bottom: 10px;
+}
+
+dialog {
+    border-radius: 8px;
+}
+
+::backdrop {
+    background-color: white;
+    opacity: 30%;
+}

@@ -48,7 +48,7 @@
         </div>
         <div class="new-todo-banner">
             <h3>New Task:</h3>
-            <form action="" method="post">
+            <form class="new-todo-form" action="" method="post">
                 <div>
                     <label for="title">Title:</label>
                     <input type="text" name="task_title" id="title" required>
@@ -75,5 +75,33 @@
             </form>
         </div>
     </div>
+    <dialog>
+        <form action="" method="post">
+            <div>
+                <label for="edit-title">Title:</label>
+                <input type="text" name="edit_task_title" id="edit-title" required>
+            </div>
+            <div>
+                <label for="edit-description">Description:</label>
+                <textarea name="edit_task_description" id="edit-description" rows="3" required></textarea>
+            </div>
+            <div>
+                <label for="edit-date">Due date:</label>
+                <input type="date" name="edit_due_date" id="edit-date" required>
+            </div>
+            <div>
+                <label for="edit-priority">Priority:</label>
+                <select name="edit_task_priority" id="edit-priority">
+                    <option selected>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+            </div>
+            <div>
+                <button class="confirm-edit-btn" type="submit">Confirm</button>
+                <button value="cancel" formmethod="dialog" class="close-modal-btn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

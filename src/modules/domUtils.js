@@ -22,7 +22,9 @@ function isValidTitle(title) {
             return false
         }
     }
-    if (title.trim() === "") {
+    if (!title) {
+        return false
+    } else if (title.trim() === "") {
         alert("Invalid Title");
         return false
     }
@@ -136,4 +138,27 @@ export function createTodoFromForm(projectTitle) {
     const todoPriority = document.querySelector("#priority").value;
 
     currentProject.appendTodo(todoTitle, todoDescription, todoDueDate, todoPriority);
+}
+
+export function renderDialog(projectTitle, todoId) {  
+    const currentProject = retrieveProject(projectTitle);
+    const todo = retrieveTodo(todoId, currentProject);
+
+    const dialog = document.querySelector("dialog");
+    const todoTitle = document.querySelector("#edit-title");
+    const todoDescription = document.querySelector("#edit-description");
+    const todoDueDate = document.querySelector("#edit-date");
+    const todoPriority = document.querySelector("#edit-priority");
+
+    const currentTodoTitle = todo.title;
+    const currentTodoDescription = todo.description;
+    const currentTodoDate = todo.dueDate;
+    const currentTodoPriority = todo.priority;
+
+    todoTitle.value = currentTodoTitle;
+    todoDescription.value = currentTodoDescription;
+    todoDueDate.value = currentTodoDate;
+    todoPriority.value = currentTodoPriority;
+
+    dialog.showModal();
 }
