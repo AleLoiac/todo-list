@@ -1,3 +1,4 @@
+import { formatDate } from "date-fns";
 import { createTodo } from "./todo";
 
 const projectList = [];
@@ -9,7 +10,7 @@ class Project {
     }
 
     appendTodo(title, description, dueDate, priority) {
-        const todo = createTodo(title, description, dueDate, priority);
+        const todo = createTodo(title, description, formatDate(new Date(dueDate), "PP"), priority);
         this.list.push(todo);
     }
 

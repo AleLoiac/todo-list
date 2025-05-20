@@ -1,9 +1,11 @@
+import { formatDate } from "date-fns";
+
 class ToDo {
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.id = crypto.randomUUID();
         this.description = description || "";
-        this.dueDate = dueDate;
+        this.dueDate = formatDate(new Date(dueDate), "PP");
         this.priority = priority || "low";
         this.completion = false;
     }
@@ -15,7 +17,7 @@ class ToDo {
     edit(title, description, dueDate, priority) {
         this.title = title;
         this.description = description || "";
-        this.dueDate = dueDate;
+        this.dueDate = formatDate(new Date(dueDate), "PP");
         this.priority = priority || "low";
     }
 }
@@ -24,5 +26,5 @@ export function createTodo(title, description, dueDate, priority) {
     if (!title) {
         return
     }
-    return new ToDo(title, description, dueDate, priority);
+    return new ToDo(title, description, formatDate(new Date(dueDate), "PP"), priority);
 }

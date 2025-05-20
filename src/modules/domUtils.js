@@ -1,3 +1,4 @@
+import { formatDate } from "date-fns";
 import { createProject, getProjectList, retrieveProject, retrieveTodo } from "./project";
 
 const projectList = document.querySelector(".project-list");
@@ -162,7 +163,7 @@ export function renderDialog(projectTitle, todoId) {
 
     todoTitle.value = currentTodoTitle;
     todoDescription.value = currentTodoDescription;
-    todoDueDate.value = currentTodoDate;
+    todoDueDate.value = formatDate(currentTodoDate, "yyyy-MM-dd");
     todoPriority.value = currentTodoPriority;
 
     todoTitle.dataset.id = todo.id;
