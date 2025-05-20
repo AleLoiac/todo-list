@@ -132,12 +132,17 @@ export function toggle(projectTitle, todoId) {
 
 export function createTodoFromForm(projectTitle) {
     const currentProject = retrieveProject(projectTitle); 
-    const todoTitle = document.querySelector("#title").value;
-    const todoDescription = document.querySelector("#description").value;
-    const todoDueDate = document.querySelector("#date").value;
-    const todoPriority = document.querySelector("#priority").value;
+    const todoTitle = document.querySelector("#title");
+    const todoDescription = document.querySelector("#description");
+    const todoDueDate = document.querySelector("#date");
+    const todoPriority = document.querySelector("#priority");
 
-    currentProject.appendTodo(todoTitle, todoDescription, todoDueDate, todoPriority);
+    currentProject.appendTodo(todoTitle.value, todoDescription.value, todoDueDate.value, todoPriority.value);
+
+    todoTitle.value = "";
+    todoDescription.value = "";
+    todoDueDate.value = "";
+    todoPriority.value = "Low";
 }
 
 export function renderDialog(projectTitle, todoId) {  
