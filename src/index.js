@@ -4,9 +4,9 @@ import { renderProject, selectProject, handleProject, selectTodo, toggle, create
 
 const defaultProject = createProject("Default project");
 renderProject(defaultProject.name);
-defaultProject.appendTodo("Sweep floor", "Sweep all house", "2025-07-15", "Low");
-defaultProject.appendTodo("Run", "Run for 4 miles", "2024-07-14", "Medium");
-defaultProject.appendTodo("Groceries", "Buy groceries for the next week", "2025-07-16", "High");
+defaultProject.appendTodo("Learn Guitar", "Practice chords and learn a new song", new Date(Date.now() + 24*60*60*1000), "Medium");
+defaultProject.appendTodo("Game Night", "Play board games with friends", new Date(Date.now() + 48*60*60*1000), "Low");
+defaultProject.appendTodo("Try New Recipe", "Cook a Thai curry from scratch", new Date(Date.now() + 72*60*60*1000), "High");
 selectProject(defaultProject.name);
 
 const addProjectBtn = document.querySelector(".add-project-btn");
