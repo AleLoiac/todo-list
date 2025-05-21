@@ -1,13 +1,24 @@
 import "./styles.css";
 import { createProject, deleteTodo } from "./modules/project";
 import { renderProject, selectProject, handleProject, selectTodo, toggle, createTodoFromForm, renderDialog, editTodo } from "./modules/domUtils";
+import { loadProjects } from "./modules/storage";
 
-const defaultProject = createProject("Default project");
-renderProject(defaultProject.name);
-defaultProject.appendTodo("Learn Guitar", "Practice chords and learn a new song", new Date(Date.now() + 24*60*60*1000), "Medium");
-defaultProject.appendTodo("Game Night", "Play board games with friends", new Date(Date.now() + 48*60*60*1000), "Low");
-defaultProject.appendTodo("Try New Recipe", "Cook a Thai curry from scratch", new Date(Date.now() + 72*60*60*1000), "High");
-selectProject(defaultProject.name);
+const storage = loadProjects();
+console.log(storage);
+
+if (!storage) {
+    const defaultProject = createProject("Default project");
+    renderProject(defaultProject.name);
+    defaultProject.appendTodo("Learn Guitar", "Practice chords and learn a new song", new Date(Date.now() + 24*60*60*1000), "Medium");
+    defaultProject.appendTodo("Game Night", "Play board games with friends", new Date(Date.now() + 48*60*60*1000), "Low");
+    defaultProject.appendTodo("Try New Recipe", "Cook a Thai curry from scratch", new Date(Date.now() + 72*60*60*1000), "High");
+    selectProject(defaultProject.name);
+} else {
+    for (const project of storage) {
+        renderProject(project.name);
+    }
+    selectProject(storage[0].name);
+}
 
 const addProjectBtn = document.querySelector(".add-project-btn");
 const projectList = document.querySelector(".project-list");
@@ -32,7 +43,8 @@ openProject.addEventListener("click", (e) => {
 
     if (e.target.closest(".toggle-btn")) {
         const id = todoElement.dataset.id;
-        toggle(title, id);
+        const target = e.target;
+        toggle(title, id, target);
     } else if (e.target.closest(".delete-task-btn")) {
         const id = todoElement.dataset.id;
         deleteTodo(title, id);

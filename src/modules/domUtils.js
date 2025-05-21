@@ -119,14 +119,15 @@ function renderClosedTodo(tag, todo) {
     newElement("p", "", todo.dueDate, tag);
 }
 
-export function toggle(projectTitle, todoId) {
+export function toggle(projectTitle, todoId, target) {
     const currentProject = retrieveProject(projectTitle);
     const todo = retrieveTodo(todoId, currentProject);
 
     todo.toggleCompletion();
     const completed = todo.completion ? "Completed" : "Not completed";
-    const openCompletion = document.querySelector(".open-completion");
-    const p = document.querySelector(".open-completion > p");
+    const openCompletion = target.closest(".open-completion");
+    const p = target.parentElement.querySelector("p");
+    console.log(openCompletion, p, target)
     openCompletion.removeChild(p);
     newElement("p", "", completed, openCompletion);
 }

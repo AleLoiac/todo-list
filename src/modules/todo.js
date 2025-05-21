@@ -1,4 +1,5 @@
 import { formatDate } from "date-fns";
+import { getProjectList } from "./project";
 
 class ToDo {
     constructor(title, description, dueDate, priority) {
@@ -12,6 +13,7 @@ class ToDo {
 
     toggleCompletion() {
         this.completion = !this.completion;
+        localStorage.setItem("projects", JSON.stringify(getProjectList()));
     }
 
     edit(title, description, dueDate, priority) {
@@ -19,6 +21,7 @@ class ToDo {
         this.description = description || "";
         this.dueDate = formatDate(new Date(dueDate), "PP");
         this.priority = priority || "low";
+        localStorage.setItem("projects", JSON.stringify(getProjectList()));
     }
 }
 
