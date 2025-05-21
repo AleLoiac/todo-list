@@ -1,5 +1,6 @@
 import { formatDate } from "date-fns";
 import { createTodo } from "./todo";
+import { saveProjects } from "./storage";
 
 const projectList = [];
 
@@ -12,7 +13,7 @@ class Project {
     appendTodo(title, description, dueDate, priority) {
         const todo = createTodo(title, description, formatDate(new Date(dueDate), "PP"), priority);
         this.list.push(todo);
-        localStorage.setItem("projects", JSON.stringify(getProjectList()));
+        saveProjects();
     }
 
     getTodoList() {
@@ -24,7 +25,7 @@ class Project {
         if (index !== -1) {
             this.list.splice(index, 1);
         }
-        localStorage.setItem("projects", JSON.stringify(getProjectList()));
+        saveProjects();
     }
 }
 
@@ -32,22 +33,13 @@ export function createProject(name) {
     const newProject = new Project(name);
     projectList.push(newProject);
 
-    localStorage.setItem("projects", JSON.stringify(getProjectList()));
+    saveProjects();
     return newProject;
 }
 
 export function getProjectList() {
     return [...projectList];
 }
-
-// export function setProjectList(arrayOfProjects) {
-//     while (projectList.length > 0) {
-//         projectList.pop();
-//     }
-//     for (const project of arrayOfProjects) {
-//         projectList.push(project);
-//     }
-// }
 
 export function retrieveProject(title) {
     const projects = getProjectList();

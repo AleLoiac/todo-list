@@ -4,7 +4,6 @@ import { renderProject, selectProject, handleProject, selectTodo, toggle, create
 import { loadProjects } from "./modules/storage";
 
 const storage = loadProjects();
-console.log(storage);
 
 if (!storage) {
     const defaultProject = createProject("Default project");

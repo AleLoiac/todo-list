@@ -127,7 +127,6 @@ export function toggle(projectTitle, todoId, target) {
     const completed = todo.completion ? "Completed" : "Not completed";
     const openCompletion = target.closest(".open-completion");
     const p = target.parentElement.querySelector("p");
-    console.log(openCompletion, p, target)
     openCompletion.removeChild(p);
     newElement("p", "", completed, openCompletion);
 }

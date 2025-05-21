@@ -2,6 +2,10 @@ import { formatDate } from "date-fns";
 import { createProject, getProjectList } from "./project";
 import { createTodo } from "./todo";
 
+export function saveProjects() {
+    localStorage.setItem("projects", JSON.stringify(getProjectList()));
+}
+
 export function loadProjects() {
     const rawList = JSON.parse(localStorage.getItem("projects"));
     if (!rawList) {
@@ -16,7 +20,7 @@ export function loadProjects() {
             todoInstance.completion = todo.completion;
             todoInstance.id = todo.id;
             projectInstance.list.push(todoInstance);
-            localStorage.setItem("projects", JSON.stringify(getProjectList()));
+            saveProjects();
         }
         hydratedList.push(projectInstance);
     }
