@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="projects-nav">
+        <h2>Projects</h2>
+        <div class="project-list">
+            <button class="add-project-btn">+ Add New Project</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="open-project">
+            <h1>Project Title</h1>
+            <button class="add-todo-btn">+ Add New Task</button>
+            <div class="todo-list">
+                <div class="todo">
+                    <p>Title</p>
+                    <p>Due date</p>
+                </div>
+                <div class="todo">
+                    <p>Title</p>
+                    <p>Due date</p>
+                </div>
+                <div class="open-todo">
+                    <div class="buttons">
+                        <button class="edit-task-btn">Edit</button>
+                        <button class="delete-task-btn">⨯</button>
+                    </div>
+                    <div class="open-pair">
+                        <p class="open-title">Title</p>
+                        <p>Due date</p>
+                    </div>
+                    <p class="open-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus quasi ad facere aliquam incidunt dignissimos libero natus sed ipsa. Non, atque quaerat. Hic veniam excepturi, error deleniti eaque impedit dolorum.</p>
+                    <div class="open-priority">
+                        <p>Priority:</p>
+                        <p>Low</p>
+                    </div>
+                    <div class="open-completion">
+                        <button class="toggle-btn">Toggle</button>
+                        <p>Completion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-todo-banner">
+            <h3>New Task:</h3>
+            <form class="new-todo-form" action="" method="post">
+                <div>
+                    <label for="title">Title:</label>
+                    <input type="text" name="task_title" id="title" required>
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea name="task_description" id="description" rows="3" required></textarea>
+                </div>
+                <div>
+                    <label for="date">Due date:</label>
+                    <input type="date" name="due_date" id="date" required>
+                </div>
+                <div>
+                    <label for="priority">Priority:</label>
+                    <select name="task_priority" id="priority">
+                        <option selected>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="confirm-task-btn" type="submit">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <dialog>
+        <form action="" method="post">
+            <div>
+                <label for="edit-title">Title:</label>
+                <input type="text" name="edit_task_title" id="edit-title" required>
+            </div>
+            <div>
+                <label for="edit-description">Description:</label>
+                <textarea name="edit_task_description" id="edit-description" rows="3" required></textarea>
+            </div>
+            <div>
+                <label for="edit-date">Due date:</label>
+                <input type="date" name="edit_due_date" id="edit-date" required>
+            </div>
+            <div>
+                <label for="edit-priority">Priority:</label>
+                <select name="edit_task_priority" id="edit-priority">
+                    <option selected>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+            </div>
+            <div>
+                <button class="confirm-edit-btn" type="submit">Confirm</button>
+                <button value="cancel" formmethod="dialog" class="close-modal-btn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
